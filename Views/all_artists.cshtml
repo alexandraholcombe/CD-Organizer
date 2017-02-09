@@ -6,7 +6,7 @@
 <ul>
   @foreach (var artist in Model)
   {
-    <li><a href="/all_artists/@artist.GetId()">@artist.GetName()</a></li>
+    <li><a href="/@artist.GetId()">@artist.GetName()</a></li>
   }
 </ul>
 <p><a href="/new-artist">Add an Artist</a></p>

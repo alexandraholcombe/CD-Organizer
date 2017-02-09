@@ -34,20 +34,26 @@ namespace CDOrganizer
 
       Get["/{id}/cds/new"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedArtist = Artist.Find(parameters.id);
-        var artistCds = selectedArtist.GetCds();
+        // var selectedArtist = Artist.Find(parameters.id);
+        // var artistCds = selectedArtist.GetCds();
+        Artist selectedArtist = Artist.Find(parameters.id);
+        List<CD> allCds = selectedArtist.GetCds();
         model.Add("artist", selectedArtist);
-        model.Add("cds", artistCds);
+        model.Add("cds", allCds);
         return View["cd_form.cshtml", model];
       };
 
       Post["/cds"] = _ => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedArtist = Artist.Find(Request.Form["artist-name"]);
-        var artistCds = selectedArtist.GetCds();
-        CD newCd = new CD(artistCds);
+        // var selectedArtist = Artist.Find(Request.Form["artist-name"]);
+        // var artistCds = selectedArtist.GetCds();
+        Artist selectedArtist = Artist.Find(Request.Form["artist-id"]);
+        List<CD> allCds = selectedArtist.GetCds();
+        string cdName = Request.Form["cd-name"];
+        CD newCd = new CD(cdName);
+        allCds.Add(newCd);
         model.Add("artist", selectedArtist);
-        model.Add("cds", artistCds);
+        model.Add("cds", allCds);
         return View["artist.cshtml", model];
       };
 
