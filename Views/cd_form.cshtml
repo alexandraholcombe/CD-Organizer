@@ -1,5 +1,6 @@
 <h1>Add a CD to your Collection!</h1>
 <form action="/" method="post">
+  <input id='artist-id' name='artist-id' type='hidden' value='@Model["category"].GetId()'>
   <label for="cd-name">Name of CD:</label>
   <input type="text" name="cd-name" id="cd-name">
   <button type="submit" name="button">Submit</button>
