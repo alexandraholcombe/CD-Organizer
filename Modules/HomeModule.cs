@@ -28,7 +28,7 @@ namespace CDOrganizer
         var selectedArtist = Category.Find(parameters.id);
         var artistCds = selectedArtist.GetCds();
         model.Add("artist", selectedArtist);
-        model.Add("tasks", artistCds);
+        model.Add("cds", artistCds);
         return View["artist.cshtml", model];
       };
 
@@ -37,7 +37,7 @@ namespace CDOrganizer
         var selectedArtist = Category.Find(parameters.id);
         var artistCds = selectedArtist.GetCds();
         model.Add("artist", selectedArtist);
-        model.Add("tasks", artistCds);
+        model.Add("cds", artistCds);
         return View["cd_form.cshtml", model];
       };
 
@@ -47,7 +47,7 @@ namespace CDOrganizer
         var artistCds = selectedArtist.GetCds();
         CD newCd = new CD(cdDescription)
         model.Add("artist", selectedArtist);
-        model.Add("tasks", artistCds);
+        model.Add("cds", artistCds);
         return View["artist.cshtml", model];
       }
 
