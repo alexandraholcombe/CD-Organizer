@@ -9,7 +9,7 @@ namespace CDOrganizer.Objects
     private int _id;
     private static List<CD> _instances = new List<CD>{};
 
-    private CD(string name)
+    public CD(string name)
     {
       _name = name;
       _instances.Add(this);
@@ -19,21 +19,21 @@ namespace CDOrganizer.Objects
     public string GetName()
     {
       return _name;
-    };
+    }
 
     public void SetName(string inputName)
     {
       _name = inputName;
-    };
+    }
 
     public static List<CD> GetAll()
     {
       return _instances;
-    };
+    }
 
     public int GetId()
     {
       return _id;
-    };
+    }
   }
 }

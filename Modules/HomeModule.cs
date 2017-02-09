@@ -18,7 +18,7 @@ namespace CDOrganizer
       };
 
       Post["/"] = _ => {
-        CD newCd = new CD(Request.Form["cd-name"]);
+        var newCd = new CD(Request.Form["cd-name"]);
         var allCds = CD.GetAll();
         return View["all_cds.cshtml", allCds];
       };
