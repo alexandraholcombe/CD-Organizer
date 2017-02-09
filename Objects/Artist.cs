@@ -52,5 +52,17 @@ namespace CDOrganizer.Objects
     {
       return _instances[searchId-1];
     }
+
+    public static Artist SearchArtist(string searchTerm)
+    {
+      foreach (var artist in _instances)
+      {
+        if (artist.GetName() == searchTerm)
+        {
+          return artist;
+        }
+      }
+      return null;
+    }
   }
 }
