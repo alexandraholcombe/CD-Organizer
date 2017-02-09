@@ -14,7 +14,7 @@ namespace CDOrganizer.Objects
     {
       _name = name;
       _instances.Add(this);
-      _id = _instances.Count();
+      _id = _instances.Count;
       _cds = new List<CD>{};
     }
 

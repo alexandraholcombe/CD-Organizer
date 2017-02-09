@@ -25,7 +25,7 @@ namespace CDOrganizer
 
       Get["/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedArtist = Category.Find(parameters.id);
+        var selectedArtist = Artist.Find(parameters.id);
         var artistCds = selectedArtist.GetCds();
         model.Add("artist", selectedArtist);
         model.Add("cds", artistCds);
@@ -34,7 +34,7 @@ namespace CDOrganizer
 
       Get["/{id}/cds/new"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedArtist = Category.Find(parameters.id);
+        var selectedArtist = Artist.Find(parameters.id);
         var artistCds = selectedArtist.GetCds();
         model.Add("artist", selectedArtist);
         model.Add("cds", artistCds);
@@ -43,13 +43,13 @@ namespace CDOrganizer
 
       Post["/cds"] = _ => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedArtist = Category.Find(parameters.id);
+        var selectedArtist = Artist.Find(Request.Form["artist-name"]);
         var artistCds = selectedArtist.GetCds();
-        CD newCd = new CD(cdDescription)
+        CD newCd = new CD(artistCds);
         model.Add("artist", selectedArtist);
         model.Add("cds", artistCds);
         return View["artist.cshtml", model];
-      }
+      };
 
       // Get["/"] = _ => {
       //   var allCds = CD.GetAll();
