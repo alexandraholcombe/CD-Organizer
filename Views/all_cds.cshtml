@@ -1,0 +1,8 @@
+<h1>View all of your current CDs</h1>
+<ul>
+  @foreach (var cd in Model)
+  {
+    <li>@cd.GetName()</li>
+  }
+</ul>
+<a href="/all_cds/new">Add another cd</a>
