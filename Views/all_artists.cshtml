@@ -1,0 +1,12 @@
+<h1>Artists</h1>
+@if (@Model.Count == 0)
+{
+  <h3>No artists have been added</h3>
+}
+<ul>
+  @foreach (var artist in Model)
+  {
+    <li><a href="/all_artists/@artists.GetId()">@artist.GetName()</a></li>
+  }
+</ul>
+<p><a href="/new-artist">Add an Artist</a></p>
