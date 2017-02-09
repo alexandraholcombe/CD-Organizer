@@ -23,6 +23,34 @@ namespace CDOrganizer
         return View["all_artists.cshtml", allArtists];
       };
 
+      Get["/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        var selectedArtist = Category.Find(parameters.id);
+        var artistCds = selectedArtist.GetCds();
+        model.Add("artist", selectedArtist);
+        model.Add("tasks", artistCds);
+        return View["artist.cshtml", model];
+      };
+
+      Get["/{id}/cds/new"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        var selectedArtist = Category.Find(parameters.id);
+        var artistCds = selectedArtist.GetCds();
+        model.Add("artist", selectedArtist);
+        model.Add("tasks", artistCds);
+        return View["cd_form.cshtml", model];
+      };
+
+      Post["/cds"] = _ => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        var selectedArtist = Category.Find(parameters.id);
+        var artistCds = selectedArtist.GetCds();
+        CD newCd = new CD(cdDescription)
+        model.Add("artist", selectedArtist);
+        model.Add("tasks", artistCds);
+        return View["artist.cshtml", model];
+      }
+
       // Get["/"] = _ => {
       //   var allCds = CD.GetAll();
       //   return View["all_cds.cshtml", allCds];
