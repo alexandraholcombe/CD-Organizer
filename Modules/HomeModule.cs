@@ -61,7 +61,7 @@ namespace CDOrganizer
         return View["search_form.cshtml"];
       };
 
-      Post["/{id}"] = _ => {
+      Post["/search_results"] = _ => {
         Dictionary<string, object> model = new Dictionary<string, object>();
         Artist selectedArtist = Artist.SearchArtist(Request.Form["search"]);
         List<CD> allCds = selectedArtist.GetCds();
